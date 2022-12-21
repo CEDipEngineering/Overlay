@@ -44,3 +44,8 @@ The overlay can't be put over games and other applications in fullscreen mode or
 - [ ] Verify temperature and memory usage stats more
 - [ ] Look into not showing over fullscreen applications (such as games in fullscreen/borderless)
 
+## Acknowledgements
+
+I could not have this project as easily or as quickly without [this guide](https://www.youtube.com/watch?v=zWuuk_j1iwM&ab_channel=tylerlaceby) from tyleraceby on youtube. Guy is an absolute legend, I appreciate the time he spent to share his experience very much.
+
+This project is completely open and free (MIT License), so please, share and use this!
