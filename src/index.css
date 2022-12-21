@@ -10,7 +10,7 @@ body {
   cursor: pointer;
   justify-content: space-around;
 
-  color: rgb(34, 255, 0);
+  color: #25E000e9;
   user-select: none;
 }
 
@@ -29,13 +29,23 @@ body {
   font-size: 1.5em;
 }
 
-#close {
+#close{
   padding: 5px;
   font-size: .8em;
   color: #bbbbbb5c;
   -webkit-app-region: no-drag;
 }
 
-#close:hover{
+#colorpicker {
+  padding: 5px;
+  background-color: transparent;
+  border: 0;
+  font-size: .8em;
+  cursor: pointer;
+  color: #bbbbbb5c;
+  -webkit-app-region: no-drag;
+}
+
+#close:hover, #colorpicker:hover{
   color: red;
 }

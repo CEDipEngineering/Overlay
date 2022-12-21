@@ -3,6 +3,34 @@ CPU_USAGE = document.getElementById("cpu");
 RAM_USAGE = document.getElementById("ram");
 CLOSE_BTN = document.getElementById("close");
 CLOSE_BTN.addEventListener("click", () => {api.close()});
+COLOR_BTN = document.getElementById("colorpicker");
+COLOR_BTN.addEventListener("click", () => {
+        let randomColor = "#" + Math.floor(Math.random()*16777215).toString(16) + Math.floor(Math.random()*100 + 155).toString(16);
+        if (randomColor.length != 9) {
+            randomColor = "#ffcc44ff"
+        }
+        window.localStorage.setItem("Color", randomColor);
+        updateAllColors(randomColor);
+    }
+);
+COLOR_BTN.addEventListener("contextmenu", () => {
+        updateAllColors("#25E000e9");
+        window.localStorage.setItem("Color", "#25E000e9");
+    }
+);
+
+const startColor = window.localStorage.getItem("Color");
+if (!startColor) {
+    window.localStorage.setItem("Color", "#25E000e9");
+    const startColor = "#25E000e9";
+}
+updateAllColors(startColor);
+
+function updateAllColors(color){
+    CLOCK.style.color = color;
+    CPU_USAGE.style.color = color;
+    RAM_USAGE.style.color = color;
+}
 
 const zeroPad = (num, places) => String(num).padStart(places, '0');
 
@@ -46,8 +74,8 @@ async function UpdateStats() {
     // }
 
     // Update ram
-    const total = (ram.total / 1e9).toFixed(1) - 2.4; // Subtract amount for no reason
-    const used  = (ram.used / 1e9).toFixed(1) - 2; // Seriously, I have no clue why, but this makes it match exactly with Task Manager
+    const total = ((ram.total - 2.4) / 1e9).toFixed(1); // Subtract amount for no reason
+    const used  = ((ram.used  - 2)   / 1e9).toFixed(1); // Seriously, I have no clue why, but this makes it match exactly with Task Manager
     RAM_USAGE.innerText = `RAM: ${used}/${total}(GB)`
 
 }

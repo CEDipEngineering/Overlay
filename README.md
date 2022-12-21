@@ -8,6 +8,8 @@ This simple transparent overlay is always on top, cant be resized accidentaly (o
 
 Currently shows Time (HH:MM:SS, 24-hour format), CPU and Ram usage. There is a small 'x' symbol, to close it. By default, will automatically run on startup, can be seen on the "startup" tab on Windows 10 Task Manager.
 
+There is also a small C button below the X button. This is used to randomly alter the color of the overlay. This color is saved in local storage, and should persist between sessions. Also, if you would like to revert to the original color, simply right-click the C.
+
 ## Example:
 
 ![example of appearance](example.png)
