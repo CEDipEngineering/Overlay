@@ -1,10 +1,31 @@
+
+// Global DOM elements
 CLOCK = document.getElementById("clock");
 CPU_USAGE = document.getElementById("cpu");
 RAM_USAGE = document.getElementById("ram");
 CLOSE_BTN = document.getElementById("close");
-CLOSE_BTN.addEventListener("click", () => {api.close()});
 COLOR_BTN = document.getElementById("colorpicker");
-COLOR_BTN.addEventListener("click", () => {
+
+// Support functions
+const zeroPad = (num, places) => String(num).padStart(places, '0');
+function updateAllColors(color){
+    CLOCK.style.color = color;
+    CPU_USAGE.style.color = color;
+    RAM_USAGE.style.color = color;
+}
+
+//=============
+//== Buttons ==
+//=============
+// Close
+CLOSE_BTN.addEventListener("click", () => 
+    {
+        api.close()
+    }
+);
+// Random Color
+COLOR_BTN.addEventListener("click", () => 
+    {
         let randomColor = "#" + Math.floor(Math.random()*16777215).toString(16) + Math.floor(Math.random()*100 + 155).toString(16);
         if (randomColor.length != 9) {
             randomColor = "#ffcc44ff"
@@ -13,12 +34,15 @@ COLOR_BTN.addEventListener("click", () => {
         updateAllColors(randomColor);
     }
 );
-COLOR_BTN.addEventListener("contextmenu", () => {
+// Reset Color
+COLOR_BTN.addEventListener("contextmenu", () => 
+    {
         updateAllColors("#25E000e9");
         window.localStorage.setItem("Color", "#25E000e9");
     }
 );
 
+// Color caching
 const startColor = window.localStorage.getItem("Color");
 if (!startColor) {
     window.localStorage.setItem("Color", "#25E000e9");
@@ -26,17 +50,10 @@ if (!startColor) {
 }
 updateAllColors(startColor);
 
-function updateAllColors(color){
-    CLOCK.style.color = color;
-    CPU_USAGE.style.color = color;
-    RAM_USAGE.style.color = color;
-}
-
-const zeroPad = (num, places) => String(num).padStart(places, '0');
-
 // Update text every 1000ms or 1s.
 setInterval(UpdateStats, 1000);
 
+// Fetch from api
 async function fetchAll() {
     // Create all promises
     const time = api.getClock();
@@ -54,6 +71,7 @@ async function fetchAll() {
     return out
 }
 
+// Update text
 async function UpdateStats() {
     const stats = await fetchAll();
     const time = stats.time;
