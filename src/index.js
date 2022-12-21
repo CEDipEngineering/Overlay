@@ -18,6 +18,7 @@ const createWindow = () => {
     maxWidth: W, minWidth: W,
     frame: false,
     autoHideMenuBar: true,
+    skipTaskbar: true,
     webPreferences: {
       sandbox: false,
       preload: path.join(__dirname, 'preload.js'),
@@ -31,6 +32,10 @@ const createWindow = () => {
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
+
+  mainWindow.setAlwaysOnTop(true, "floating");
+  mainWindow.setVisibleOnAllWorkspaces(true);
+  mainWindow.setFullScreenable(false);
 
   // Open the DevTools.
   //  mainWindow.webContents.openDevTools();

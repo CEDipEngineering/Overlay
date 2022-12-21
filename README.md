@@ -6,11 +6,11 @@ Simple transparent overlay meant to be kept running all the time. Shows time, cp
 
 This simple transparent overlay is always on top, cant be resized accidentaly (only by changing the source code), and can be closed with a single click, while also being draggable around the screen quite easily.
 
-Currently shows Time (HH:MM:SS, 24-hour format), CPU usage, Highest cpu-core temperature, Ram usage. There is a small 'x' symbol, to close it. By default, will automatically run on startup, can be seen on the "startup" tab on Windows 10 Task Manager.
+Currently shows Time (HH:MM:SS, 24-hour format), CPU and Ram usage. There is a small 'x' symbol, to close it. By default, will automatically run on startup, can be seen on the "startup" tab on Windows 10 Task Manager.
 
 ## Example:
 
-![example of appearance](example2.png)
+![example of appearance](example.png)
 
 ## Build and use:
 
@@ -29,20 +29,15 @@ Running this will create a shortcut, install the app (really just tells the OS a
 
 I have not tested this on anything other than my own Windows 10 computer, and have no clue if it will work on Linux or MacOS. MacOS will need an additional package not included here, as per the 'systeminformation' package description, find out more [here](https://systeminformation.io/cpu.html).
 
-Also, in Windows 10, if you don't see the temperature display (such as the example below), try running as administrator (you can configure startup to run as admin as well, just go into properties, compatibility). If this does not solve the problem, your system might not support this measurement ([as per the 'systeminformation' package documentation](https://systeminformation.io/cpu.html))
-
-![example of no temp](example.png)
-
 The startup is also a little buggy, this is being worked on.
 
-The overlay can't be put over games and other applications in fullscreen mode or borderless windowed mode. Don't know why yet, will lok into in the future.
+The overlay can't be put over games and other applications in fullscreen mode or borderless windowed mode. Don't know why yet, will lok into in the future. UPDATE: apparently this is mostly an OS limitation, I made some tweaks to make it appear over as much stuff as possible, but the way fullscreen works kinda blocks windows over them, and there's not much more I can do about it.
 
 ## To-Do:
 
 - [ ] Fix startup
-- [ ] Hide from alt-tab menu and taskbar
-- [ ] Verify temperature and memory usage stats more
-- [ ] Look into not showing over fullscreen applications (such as games in fullscreen/borderless)
+- [x] Hide from alt-tab menu and taskbar
+- [x] Look into not showing over fullscreen applications (such as games in fullscreen/borderless)
 
 ## Acknowledgements
 
