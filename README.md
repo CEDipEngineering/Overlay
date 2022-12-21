@@ -35,9 +35,12 @@ Also, in Windows 10, if you don't see the temperature display (such as the examp
 
 The startup is also a little buggy, this is being worked on.
 
+The overlay can't be put over games and other applications in fullscreen mode or borderless windowed mode. Don't know why yet, will lok into in the future.
+
 ## To-Do:
 
 - [ ] Fix startup
-- [ ] Hide from alt-tab menu
+- [ ] Hide from alt-tab menu and taskbar
 - [ ] Verify temperature and memory usage stats more
+- [ ] Look into not showing over fullscreen applications (such as games in fullscreen/borderless)
 
