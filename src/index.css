@@ -1,0 +1,41 @@
+* {
+  margin: auto 0;
+  padding: 0;
+}
+
+body {
+  -webkit-app-region: drag;
+  display: flex;
+  background-color: transparent;
+  cursor: pointer;
+  justify-content: space-around;
+
+  color: rgb(34, 255, 0);
+  user-select: none;
+}
+
+#infodiv {
+  font-family: monospace;
+  text-shadow: 0 0 2px #000; /* horizontal-offset vertical-offset 'blur' colour */
+  -moz-text-shadow: 0 0 2px #000;
+  -webkit-text-shadow: 0 0 2px #000;
+}
+
+#clock {
+  font-size: 3em;
+}
+
+#cpu, #ram {
+  font-size: 1.5em;
+}
+
+#close {
+  padding: 5px;
+  font-size: .8em;
+  color: #bbbbbb5c;
+  -webkit-app-region: no-drag;
+}
+
+#close:hover{
+  color: red;
+}
