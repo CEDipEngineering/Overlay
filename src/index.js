@@ -7,7 +7,8 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 const W = 350;
-const H = 90;
+const H = 110;
+var TopUpdateTimeout;
 
 const createWindow = () => {
   // Create the browser window.
@@ -37,6 +38,15 @@ const createWindow = () => {
   mainWindow.setVisibleOnAllWorkspaces(true);
   mainWindow.setFullScreenable(false);
 
+  TopUpdateTimeout = setTimeout(function(){
+    try {
+      mainWindow.setAlwaysOnTop(true);
+    } catch (TypeError) {
+      clearTimeout(TopUpdateTimeout);
+      mainWindow = null;
+    }
+  }, 1);
+
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
 };
@@ -51,6 +61,7 @@ app.on('ready', createWindow);
 // explicitly with Cmd + Q.
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
+    clearTimeout(TopUpdateTimeout);
     app.quit();
   }
 });

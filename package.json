@@ -21,6 +21,7 @@
     "@jaames/iro": "^5.5.2",
     "electron-reload": "^2.0.0-alpha.1",
     "electron-squirrel-startup": "^1.0.0",
+    "node": "^21.2.0",
     "systeminformation": "^5.16.6"
   },
   "devDependencies": {

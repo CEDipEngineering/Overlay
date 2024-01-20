@@ -13,6 +13,10 @@ function clock() {
     return `${zeroPad(hours, 2)}:${zeroPad(minutes, 2)}:${zeroPad(seconds, 2)}`
 }
 
+function datetime() {
+    return `${new Date().toLocaleDateString('pt-br')}`
+}
+
 contextBridge.exposeInMainWorld( 
     "api", 
     {
@@ -21,5 +25,6 @@ contextBridge.exposeInMainWorld(
         getCpuUsage : () => currentLoad(),
         getMem : () => mem(),
         getTemp : () => cpuTemperature(),
+        getDate : () => datetime(),
     }
 );

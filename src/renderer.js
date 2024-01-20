@@ -1,6 +1,7 @@
 
 // Global DOM elements
 CLOCK = document.getElementById("clock");
+DATETIME = document.getElementById("date");
 CPU_USAGE = document.getElementById("cpu");
 RAM_USAGE = document.getElementById("ram");
 CLOSE_BTN = document.getElementById("close");
@@ -10,6 +11,7 @@ COLOR_BTN = document.getElementById("colorpicker");
 const zeroPad = (num, places) => String(num).padStart(places, '0');
 function updateAllColors(color){
     CLOCK.style.color = color;
+    DATETIME.style.color = color;
     CPU_USAGE.style.color = color;
     RAM_USAGE.style.color = color;
 }
@@ -45,8 +47,8 @@ COLOR_BTN.addEventListener("contextmenu", () =>
 // Color caching
 const startColor = window.localStorage.getItem("Color");
 if (!startColor) {
+    // const startColor = "#25E000e9";
     window.localStorage.setItem("Color", "#25E000e9");
-    const startColor = "#25E000e9";
 }
 updateAllColors(startColor);
 
@@ -59,11 +61,13 @@ async function fetchAll() {
     const time = api.getClock();
     const cpu = api.getCpuUsage();
     const ram = api.getMem();
+    const datetime = api.getDate();
     // const temp = api.getTemp();
 
     // Await all promises, let them run in parallel
     const out = {
         "time": await time,
+        "date": await datetime,
         "cpu": await cpu,
         "ram": await ram,
         // "temp": await temp,
@@ -75,12 +79,16 @@ async function fetchAll() {
 async function UpdateStats() {
     const stats = await fetchAll();
     const time = stats.time;
+    const datetime = stats.date;
     const cpu = stats.cpu;
     const ram = stats.ram;
     // const temp = stats.temp;
     
     // Update time
     CLOCK.innerText = time;
+
+    // Update date
+    DATETIME.innerText = datetime;
 
     // Update cpu
     const use = cpu.currentLoad.toFixed(1);
